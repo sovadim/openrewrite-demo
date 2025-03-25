@@ -9,16 +9,18 @@ repositories {
 
 rewrite {
     activeRecipe(
-        'org.openrewrite.java.OrderImports'
+        'org.openrewrite.java.migrate.UpgradeToJava21'
     )
+    setExportDatatables(true)
 }
 
 dependencies {
+    rewrite("org.openrewrite.recipe:rewrite-migrate-java:3.4.0")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 test {
