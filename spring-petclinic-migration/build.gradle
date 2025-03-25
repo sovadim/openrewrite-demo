@@ -1,11 +1,16 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'org.openrewrite.rewrite' version '7.2.1'
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
+}
+
+rewrite {
+    activeRecipe('org.openrewrite.java.spring.boot2.SpringBoot2JUnit4to5Migration')
 }
 
 dependencies {
@@ -40,6 +45,7 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest-library'
     testImplementation 'org.assertj:assertj-core'
     testImplementation 'com.jayway.jsonpath:json-path'
+    rewrite('org.openrewrite.recipe:rewrite-spring')
 }
 
 group = 'org.springframework.samples'
