@@ -9,7 +9,7 @@ repositories {
 
 rewrite {
     activeRecipe(
-        // Here we can enumerate the recipes we want to use
+        'org.openrewrite.java.OrderImports'
     )
 }
 
