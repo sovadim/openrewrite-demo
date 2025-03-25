@@ -1,14 +1,19 @@
 plugins {
     id 'java'
+    id 'org.openrewrite.rewrite' version '7.2.1'
 }
 
 repositories {
     mavenCentral()
 }
 
+rewrite {
+    activeRecipe(
+        // Here we can enumerate the recipes we want to use
+    )
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 java {
