@@ -1,19 +1,26 @@
 plugins {
     id 'java'
+    id 'org.openrewrite.rewrite' version '7.2.1'
 }
 
 repositories {
     mavenCentral()
 }
 
+rewrite {
+    activeRecipe(
+        'org.openrewrite.java.migrate.UpgradeToJava21'
+    )
+    setExportDatatables(true)
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    rewrite("org.openrewrite.recipe:rewrite-migrate-java:3.4.0")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 test {
